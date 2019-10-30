@@ -16,7 +16,7 @@ namespace RealsenseService
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
-                new Service1()
+                new RealsenseWinService()
             };
             ServiceBase.Run(ServicesToRun);
         }
