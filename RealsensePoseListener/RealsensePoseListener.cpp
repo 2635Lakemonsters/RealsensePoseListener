@@ -25,10 +25,22 @@ int __cdecl main(void)
 	rs2::pipeline pipe;
 	// Create a configuration for configuring the pipeline with a non default profile
 	rs2::config cfg;
-	// Add pose stream
-	cfg.enable_stream(RS2_STREAM_POSE, RS2_FORMAT_6DOF);
-	// Start pipeline with chosen configuration
-	pipe.start(cfg);
+	bool cameraInitialized = false;
+	while (!cameraInitialized)
+	{
+		try
+		{
+			// Add pose stream
+			cfg.enable_stream(RS2_STREAM_POSE, RS2_FORMAT_6DOF);
+			// Start pipeline with chosen configuration
+			pipe.start(cfg);
+			cameraInitialized = true;
+		}
+		catch (...)
+		{
+			
+		}
+	}
 
 	WSADATA wsaData;
 	int iResult;
